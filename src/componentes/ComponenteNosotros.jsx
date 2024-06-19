@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React from "react";
 import "../estilos/nosotros.css";
 
 function ComPrincipios ({titulo, texto}) {
@@ -13,25 +13,6 @@ function ComPrincipios ({titulo, texto}) {
 }
 
 function ComponenteNosotros () {
-    const [indice, setIndice] = useState(0);
-    const imagenes = [
-        '../recursos/0.jpg',
-        '../recursos/1.jpg',
-        '../recursos/22.jpg',
-        '../recursos/5.jpg',
-        '../recursos/5.jpg',
-        '../recursos/6.jpg'
-    ];
-    const irAnterior = () => {
-        const esPrimeraImagen = indice === 0;
-        const nuevoIndice = esPrimeraImagen ? imagenes.length - 1 : indice - 1;
-        setIndice(nuevoIndice);
-    };
-    const irSiguiente = () => {
-        const esUltimaImagen = indice === imagenes.length - 1;
-        const nuevoIndice = esUltimaImagen ? 0 : indice + 1;
-        setIndice(nuevoIndice);
-    };
     return (
         <>
             <section className="container sec-nosotros">
@@ -51,13 +32,28 @@ function ComponenteNosotros () {
             </section>
             <section className="container seccion-propuesta">
                 <div className="row">
-                    <div className="col-12 col-sm-6 col-xl-6 imagen">
+                    <div className="col-12 col-sm-6 col-xl-6 imagenNosotros">
                         
                     </div>
-                    <div id="carouselExample" className="carousel slide col-12 col-sm-6 col-xl-6 informacion">
-                        <button onClick={irAnterior}>Anterior</button>
-                            <img src={require("../recursos/0.jpg")} alt={`Diapositiva ${indice}`} />
-                        <button onClick={irSiguiente}>Siguiente</button>
+                    <div className="col-12 col-sm-6 col-xl-6 informacionNosotros">
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+                            
+                        </div>
                     </div>
                 </div>
             </section>
