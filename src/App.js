@@ -9,7 +9,7 @@ import './App.css';
 // Importaciones de imágenes
 import LogoGamma from './recursos/insignia.jpg';
 // Importaciones Componentes
-import { ComponenteCursos, ComponenteAsistencia, ComponenteContacto, ComponenteInicio, ComponenteLogin, ComponenteLogros, ComponenteNosotros} from "./componentes"
+import { ComponenteNotas, ComponentePanel, ComponenteContacto, ComponenteInicio, ComponenteLogin, ComponenteLogros, ComponenteNosotros} from "./componentes"
 
 function App() {
     return (
@@ -22,13 +22,13 @@ function App() {
                     <div className="titulo">
                         COLEGIO GAMMA
                     </div>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" id="botonBarra"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="barra-nav">
                             <Nav.Link as={Link} to="/inicio"> Inicio </Nav.Link>
                             <Nav.Link as={Link} to="/nosotros"> Nosotros </Nav.Link>
                             <Nav.Link as={Link} to="/logros"> Logros </Nav.Link>
                             <Nav.Link as={Link} to="/contacto" > Contáctanos </Nav.Link>
+                            <Nav.Link as={Link} to="/notas" > Notas </Nav.Link>
                             <Nav.Link as={Link} to="/login" id="login"> Login </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
@@ -40,8 +40,8 @@ function App() {
                     <Route path='/logros' element={<ComponenteLogros />}/>
                     <Route path='/contacto' element={<ComponenteContacto />}/>
                     <Route path='/login'element={<ComponenteLogin />}/>
-                    <Route path="/asistencia" element={<ComponenteAsistencia />} />
-                    <Route path="/cursos" element={<ComponenteCursos />} />
+                    <Route path="/notas" element={<ComponenteNotas />} />
+                    <Route path="/panel" element={<ComponentePanel />} />
                 </Routes>
             </Router>
             <footer className="container-fluid seccion-pie">

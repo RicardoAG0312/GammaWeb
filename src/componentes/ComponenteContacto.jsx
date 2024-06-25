@@ -39,18 +39,18 @@ function ComponenteContacto () {
                 <div className="col-12 col-sm-8 col-xxl-8 formulario">
                     <form ref={formRef} action="/submit_form" method='POST'>
                         <div>
-                            <label for="fname">Nombre: </label><br/>
-                            <input type="text" id="fname" name="fname" placeholder="Ingresa tu nombre" required="true" /><br/>
-                            <label for="email">Correo Electrónico: </label><br/>
-                            <input type="email" id="email" name="email" placeholder="Ingresa tu email" required="true" /><br/>
-                            <label for="phone">Nro° de Celular:</label><br/>
-                            <input type="number" id="phone" name="phone" placeholder="Ingresa tu celular" required="true" /><br/>
+                            <label htmlFor="fname">Nombre: </label><br/>
+                            <input type="text" id="fname" name="fname" placeholder="Ingresa tu nombre" required={true} /><br/>
+                            <label htmlFor="email">Correo Electrónico: </label><br/>
+                            <input type="email" id="email" name="email" placeholder="Ingresa tu email" required={true} /><br/>
+                            <label htmlFor="phone">Nro° de Celular:</label><br/>
+                            <input type="number" id="phone" name="phone" placeholder="Ingresa tu celular" required={true} /><br/>
                         </div>
                         <div>
-                            <label for="dni">DNI:</label><br/>
-                            <input type="number" id="dni" name="dni" placeholder="Ingresa tu DNI" required="true" /><br/>
-                            <label for="message">Mensaje:</label><br/>
-                            <textarea id="message" name="message" placeholder="Ingresa tu mensaje" required="true"></textarea><br/>
+                            <label htmlFor="dni">DNI:</label><br/>
+                            <input type="number" id="dni" name="dni" placeholder="Ingresa tu DNI" required={true} /><br/>
+                            <label htmlFor="message">Mensaje:</label><br/>
+                            <textarea id="message" name="message" placeholder="Ingresa tu mensaje" required={true}></textarea><br/>
                             <input type="submit" value="ENVIAR" />
                         </div>
                     </form>
