@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gamma/static/css/main.e5c420e2.css",
-    "main.js": "/gamma/static/js/main.b71888fd.js",
+    "main.css": "/gamma/static/css/main.ed273e96.css",
+    "main.js": "/gamma/static/js/main.aaac438a.js",
     "static/media/NuestrosPilaresEstudiantiles.mp4": "/gamma/static/media/NuestrosPilaresEstudiantiles.d11e711884c382f0154a.mp4",
     "static/media/slogan.mp4": "/gamma/static/media/slogan.c1b871de3f8e761d1d0a.mp4",
     "static/media/insignia.jpg": "/gamma/static/media/insignia.0e9270ad5d50beaba5b9.jpg",
@@ -36,11 +36,11 @@
     "static/media/alumno3.jpg": "/gamma/static/media/alumno3.224bea61fa83aa4f9a6f.jpg",
     "static/media/alumno7.jpg": "/gamma/static/media/alumno7.05925261f0a10d2f8184.jpg",
     "index.html": "/gamma/index.html",
-    "main.e5c420e2.css.map": "/gamma/static/css/main.e5c420e2.css.map",
-    "main.b71888fd.js.map": "/gamma/static/js/main.b71888fd.js.map"
+    "main.ed273e96.css.map": "/gamma/static/css/main.ed273e96.css.map",
+    "main.aaac438a.js.map": "/gamma/static/js/main.aaac438a.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5c420e2.css",
-    "static/js/main.b71888fd.js"
+    "static/css/main.ed273e96.css",
+    "static/js/main.aaac438a.js"
   ]
 }
