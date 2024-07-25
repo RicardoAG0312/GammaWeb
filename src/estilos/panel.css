@@ -1,3 +1,26 @@
+.barraPanel {
+    background-color: #212529;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+.barraPanel a {
+    color: white;
+    text-decoration: none;
+}
 .contenedorAlumnosTabla {
     margin: 15px auto;
 }
+.contenedorAlumnosTabla .contenedorAddAlumno input{
+    width: 145px;
+    height: 30px;
+    text-align: center;
+}
+.tb100 {
+    width: 100%;
+    background-color: red;
+}
+

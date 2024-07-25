@@ -29,11 +29,13 @@ function ComponenteNotas () {
             setMostrarSeccion(false);
         }
     };
+
+    console.log(alumnoDatos);
     return (
         <>
             <section className="container login">
                 <div className="login-form">
-                    {alumnoNombre ? alumnoDatos.map((nombre, index) => <h3 key={index}> {nombre.Nombre} </h3>) : "Ingrese DNI"}
+                    {alumnoNombre ? alumnoDatos.map((nombre) => <h3 key={nombre.DNI}> {nombre.Nombre} </h3>) : "Ingrese DNI"}
                     <img src={require("../recursos/insignia.jpg")} alt="Logo" />
                     <form action="./login.html" method="POST">
                         <input value={alumnoDNI} onChange={(e) => setAlumnoDNI(e.target.value)} type="number" name="alumnoDNI" placeholder="DNI del Alumno:" required={true} id="alumnoDNI" />
@@ -54,8 +56,8 @@ function ComponenteNotas () {
                                 <th scope="col">Télefono Apoderado</th>
                             </tr>
                         </thead>
-                        {alumnoDatos.map((alumno, index) => (
-                            <tbody key={index}>
+                        {alumnoDatos.map((alumno) => (
+                            <tbody key={alumno.DNI}>
                                 <tr>
                                     <td>{alumno.DNI}</td>
                                     <td>{alumno.Nombre}</td>
@@ -82,12 +84,18 @@ function ComponenteNotas () {
                                 <th scope="col"> Notas </th>
                             </tr>
                         </thead>
-                        {alumnoDatos.map((alumno, index) => (
-                            <tbody key={index}>
-                                <tr>
-                                    <td>{alumno.NombreCurso}</td>
-                                    <td>{alumno.Calificacion}</td>
-                                </tr> 
+                        {alumnoDatos.map((alumno) => (
+                            <tbody key={alumno.DNI}>
+                                {alumno.NombresCursos ? alumno.NombresCursos.split(',').map((curso, index) => (
+                                    <tr key={index} className="table-danger">
+                                        <td>{curso}</td>
+                                        <td>{alumno.Calificaciones.split(',')[index]}</td>
+                                    </tr>
+                                )) : (
+                                    <tr className="table-danger">
+                                        <td colSpan="2"> ¡Lastima, no hay cursos ni notas registradas! </td>
+                                    </tr>
+                                )}
                             </tbody>
                         ))}
                     </table>

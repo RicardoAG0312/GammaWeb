@@ -1,5 +1,5 @@
 // Importaciones de bibliotecas
-import React from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes, Navigate } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -9,41 +9,79 @@ import './App.css';
 // Importaciones de imágenes
 import LogoGamma from './recursos/insignia.jpg';
 // Importaciones Componentes
-import { ComponenteNotas, ComponentePanel, ComponenteContacto, ComponenteInicio, ComponenteLogin, ComponenteLogros, ComponenteNosotros} from "./componentes"
+import { ComponenteMaestros, ComponenteAsistencia, ComponenteProNotas, ComponenteAlumnos, ComponenteCursos, ComponenteProfesores, ComponenteNotas, ComponenteContacto, ComponenteInicio, ComponenteLogin, ComponenteLogros, ComponenteNosotros} from "./componentes"
+
+// Contexto de autenticación
+export const AuthContext = createContext(null);
+
+// Hook personalizado para usar el contexto de autenticación
+export function useAuth() {
+    return useContext(AuthContext);
+}
+
+// Componente de ruta protegida
+function RutaProtegida({ children }) {
+    const auth = useAuth();
+    if (!auth.usuario) {
+        return <Navigate to="/login" />;
+    }
+    return children;
+}
 
 function App() {
+    const [usuario, setUsuario] = useState(null);
+
+    // Función para iniciar sesión
+    const iniciarSesion = (usuario) => {
+        setUsuario(usuario);
+    };
+
+    // Función para cerrar sesión
+    const cerrarSesion = () => {
+        setUsuario(null);
+    };
+
+
+
     return (
         <div className="App">
-            <Router>
-                <Navbar expand="md" id="navbar">
-                    <Navbar.Brand href="/inicio">
-                        <img className="h-100" src={LogoGamma} alt="Logo Gamma" />
-                    </Navbar.Brand>
-                    <div className="titulo">
-                        COLEGIO GAMMA
-                    </div>
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="barra-nav">
-                            <Nav.Link as={Link} to="/inicio"> Inicio </Nav.Link>
-                            <Nav.Link as={Link} to="/nosotros"> Nosotros </Nav.Link>
-                            <Nav.Link as={Link} to="/logros"> Logros </Nav.Link>
-                            <Nav.Link as={Link} to="/contacto" > Contáctanos </Nav.Link>
-                            <Nav.Link as={Link} to="/notas" > Notas </Nav.Link>
-                            <Nav.Link as={Link} to="/login" id="login"> Login </Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
-                <Routes>
-                    <Route index path='/gamma' element={<Navigate to="/inicio" />}/>
-                    <Route path='/inicio' element={<ComponenteInicio />}/>
-                    <Route path='/nosotros' element={<ComponenteNosotros />}/>
-                    <Route path='/logros' element={<ComponenteLogros />}/>
-                    <Route path='/contacto' element={<ComponenteContacto />}/>
-                    <Route path='/login'element={<ComponenteLogin />}/>
-                    <Route path="/notas" element={<ComponenteNotas />} />
-                    <Route path="/panel" element={<ComponentePanel />} />
-                </Routes>
-            </Router>
+            <AuthContext.Provider value={{ usuario, iniciarSesion, cerrarSesion }}>
+                <Router>
+                    <Navbar expand="md" id="navbar">
+                        <Navbar.Brand href="/inicio">
+                            <img className="h-100" src={LogoGamma} alt="Logo Gamma" />
+                        </Navbar.Brand>
+                        <div className="titulo">
+                            COLEGIO GAMMA
+                        </div>
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="barra-nav">
+                                <Nav.Link as={Link} to="/inicio"> Inicio </Nav.Link>
+                                <Nav.Link as={Link} to="/nosotros"> Nosotros </Nav.Link>
+                                <Nav.Link as={Link} to="/logros"> Logros </Nav.Link>
+                                <Nav.Link as={Link} to="/contacto" > Contáctanos </Nav.Link>
+                                <Nav.Link as={Link} to="/notas" > Notas </Nav.Link>
+                                <Nav.Link as={Link} to="/login" id="login"> Login </Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
+                    <Routes>
+                        <Route index path='/gamma' element={<Navigate to="/inicio" />}/>
+                        <Route path='/inicio' element={<ComponenteInicio />}/>
+                        <Route path='/nosotros' element={<ComponenteNosotros />}/>
+                        <Route path='/logros' element={<ComponenteLogros />}/>
+                        <Route path='/contacto' element={<ComponenteContacto />}/>
+                        <Route path='/login'element={<ComponenteLogin />}/>
+                        <Route path="/notas" element={<ComponenteNotas />} />
+                        <Route path="/panel/listaalumnos" element={<RutaProtegida> <ComponenteAlumnos /> </RutaProtegida>} />
+                        <Route path="/panel/listaprofesores" element={<ComponenteProfesores />} />
+                        <Route path="/panel/listacursos" element={<ComponenteCursos />} />
+                        <Route path="/panel/listanotas" element={<RutaProtegida> <ComponenteProNotas /> </RutaProtegida>} />
+                        <Route path="/panel/listaasistencia" element={<ComponenteAsistencia />} />
+                        <Route path="/panel/listamaestros" element={<ComponenteMaestros />} />
+                    </Routes>
+                </Router>
+            </AuthContext.Provider>
             <footer className="container-fluid seccion-pie">
                     <div>
                         <h1> Dirección: </h1>

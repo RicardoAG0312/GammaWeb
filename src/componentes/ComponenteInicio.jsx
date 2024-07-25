@@ -66,7 +66,7 @@ export function ComponenteInicio () {
                     grado = "Secundaria"
                 />
                 <SubContenedoresGrados 
-                    imagen = "IMAGEN3"
+                    imagen = "5"
                     grado = "Pre Universitaria"
                 />
             </section>

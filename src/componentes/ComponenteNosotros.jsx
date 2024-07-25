@@ -57,6 +57,17 @@ function ComponenteNosotros () {
                     </div>
                 </div>
             </section>
+            <section className="container seccion-historia-videos">
+                <video controls autoPlay preload='auto' loop className="historia-videos">
+                    <source src={require("../recursos/video1.mp4")} type="video/mp4"/>
+                </video>
+                <video controls autoPlay preload='auto' loop className="historia-videos">
+                    <source src={require("../recursos/video1.mp4")} type="video/mp4"/>
+                </video>
+                <video controls autoPlay preload='auto' loop className="historia-videos">
+                    <source src={require("../recursos/video4.mp4")} type="video/mp4"/>
+                </video>
+            </section>
             <section className="container-fluid seccion-ubi">
                 <div>
 
